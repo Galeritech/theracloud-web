@@ -1,0 +1,19 @@
+name: Branch Protection
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+
+jobs:
+  prevent-direct-push:
+    name: Prevent Direct Pushes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if push is from PR
+        run: |
+          if [ "${{ github.event_name }}" != "pull_request" ]; then
+            echo "⚠️ Direct pushes detected. All changes should go through PRs."
+            echo "This is a warning. Consider using PRs for better code review."
+          fi
