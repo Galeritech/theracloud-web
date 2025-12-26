@@ -296,6 +296,33 @@ GitHub Actions workflows are configured for:
    - Prevents broken PRs from being merged
    - Enforces PR requirements
 
+### ⚙️ GitHub Branch Protection Setup
+
+To fully enable branch protection, configure the following in GitHub Settings → Branches:
+
+**For `develop` branch:**
+
+- ✅ Require a pull request before merging
+- ✅ Require approvals: 1
+- ✅ Require status checks to pass before merging
+  - ✅ `lint`
+  - ✅ `test`
+  - ✅ `build`
+- ✅ Require branches to be up to date before merging
+- ✅ Do not allow bypassing the above settings
+
+**For `main` branch:**
+
+- ✅ Require a pull request before merging
+- ✅ Require approvals: 1
+- ✅ Require status checks to pass before merging
+  - ✅ `lint`
+  - ✅ `test`
+  - ✅ `build`
+- ✅ Require branches to be up to date before merging
+- ✅ Do not allow bypassing the above settings
+- ✅ Restrict pushes that create files matching `release/**` pattern (optional)
+
 ## 📊 Code Coverage
 
 The project maintains a minimum coverage threshold:
